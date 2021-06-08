@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+  <button mat-button style="z-index: 1;" (click)="opened= !opened">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <span>Eur Medica</span>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="opened" fixedInViewport="false" mode="side">
+    <mat-nav-list>
+
+      <a mat-list-item routerLink="/home" class="text-small" style="color:white;">
+        <mat-icon aria-label="Side nav toggle icon">home</mat-icon>
+        <span style="margin: 15%; color: #fff;"> Inicio </span>
+      </a>
+
+      <a mat-list-item routerLink="/person" class="text-small" style="color:white;">
+        <mat-icon aria-label=" Side nav toggle icon">people</mat-icon>
+        <span style="margin: 15%; color: #fff;">Persona</span>
+      </a>
+
+      <a mat-list-item routerLink="/eps" class="text-small" style="color:white;">
+        <mat-icon aria-label="Side nav toggle icon">local_hospital</mat-icon>
+        <span style="margin: 15%; color: #fff;">Eps</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,110 @@
+<h2 mat-dialog-title>Agregar nueva persona</h2>
+<mat-dialog-content class="mat-typography">
+  <div [formGroup]="createForm">
+
+    <mat-grid-list cols="4" rowHeight="4:1">
+      <div style="display: flex;
+  justify-content: center;">
+        <mat-form-field appearance="outline">
+          <mat-label>Primer Nombre</mat-label>
+          <input matInput placeholder="ejemplo: juan" formControlName="primer_nombre">
+          <mat-hint>Digite su nombre</mat-hint>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Segundo Nombre</mat-label>
+          <input matInput placeholder="ejemplo: David " formControlName="segundo_nombre">
+          <mat-hint>Digite su segundo nombre</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Primer Apellido</mat-label>
+          <input matInput placeholder="ejemplo: Diaz" formControlName="primer_apellido">
+          <mat-hint>Digite su primer apellido</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Segundo Apellido</mat-label>
+          <input matInput placeholder="ejemplo: Estrada" formControlName="segundo_apellido">
+          <mat-hint>Digite su segundo apellido</mat-hint>
+        </mat-form-field>
+      </div>
+    </mat-grid-list>
+
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <div style="display: flex;
+  justify-content: center;">
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo documento</mat-label>
+          <mat-select formControlName="tipo">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let typeDocument of typeDocuments" [value]="typeDocument.name">
+              {{typeDocument.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Numero</mat-label>
+          <input matInput placeholder="ejemplo: 11323232" formControlName="numero">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha de expedicion</mat-label>
+          <input matInput formControlName="fecha_expedicion">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Lugar de expedicion</mat-label>
+          <input matInput formControlName="lugar_expedicion">
+        </mat-form-field>
+      </div>
+    </mat-grid-list>
+
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <div style="display: flex;
+  justify-content: center;">
+        <mat-form-field appearance="outline">
+          <mat-label>Estado civil</mat-label>
+          <mat-select formControlName="estado_civil">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let stateCivil of stateCivils" [value]="stateCivil.name">
+              {{stateCivil.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Sexo</mat-label>
+          <mat-select formControlName="sexo">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let gender of genders" [value]="gender.name">
+              {{gender.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Correo Electronico</mat-label>
+          <input matInput formControlName="correo_electronico">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Afiliar a eps</mat-label>
+          <mat-select formControlName="idEps">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let item of selectItem" [value]="item._id">
+              {{ item.codigo}} - {{item.entidad}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-grid-list>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close color="primary" (click)="createPerson()"
+    [disabled]="!createForm.valid">Guardar</button>
+  <button mat-button [mat-dialog-close]="true" color="secondary">Salir</button>
+</mat-dialog-actions>
